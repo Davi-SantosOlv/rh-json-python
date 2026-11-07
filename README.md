@@ -1,4 +1,4 @@
-# 🍕 Sistema de RH em Python
+# 💼 Sistema de RH em Python
 
 Este programa simula o cadastro, exclusão e visualização de empregados cadastros NO sistema de RH de uma empresa. O arquivo `empregados.json` atua como um banco de dados tabela única.
 
