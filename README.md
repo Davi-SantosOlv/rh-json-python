@@ -6,7 +6,7 @@ Este programa simula o cadastro, exclusão e visualização de empregados cadast
 
 - **Conceitos de JSON e Python:** Transformação de Object para Dictionary ou String, Null para None, etc.
 - **Context Managers:** Uso de `with open()` junto com os argumentos `r` e `w` para ler e alterar o arquivo JSON.
--**Comandos Básicos:** `json.load()` e `json.dump()`.
+- **Comandos Básicos:** `json.load()` e `json.dump()`.
 
 ## 🚀 Como executar
 
