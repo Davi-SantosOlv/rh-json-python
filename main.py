@@ -1,11 +1,10 @@
 import json
 
 def cadastrar_empregado():
-  empregado = {}
-
-  empregado["nome"] = digitar_str("Digite o nome do empregado: ")
-  empregado["setor"] = digitar_str("Digite o setor: ")
-  empregado["cargo"] = digitar_str("Digite o cargo: ")
+  empregado = dict()
+  empregado["nome"] = input("Digite o nome do empregado: ")
+  empregado["setor"] = input("Digite o setor: ")
+  empregado["cargo"] = input("Digite o cargo: ")
   
   while True:
     salario = input("Digite o salário: ")
@@ -15,30 +14,50 @@ def cadastrar_empregado():
     else:
       print("Digite apenas números!")
 
-  with open("empregados.json", "a") as arq:
-    json.dump(empregado, arq)
+  with open("empregados.json", "r") as arq:
+    empregados = json.load(arq)
 
+  empregados.append(empregado)
+
+  with open("empregados.json", "w") as arq:
+    json.dump(empregados, arq, indent=2)
+
+  print("Cadastro realizado com sucesso!\n")
 
 def excluir_cadastro():
-  pass
+  with open("empregados.json", "r") as arq:
+    empregados = json.load(arq)
 
-def buscar_empregados():
-  pass
+  nome = input("Digite o nome do empregado: ")
 
-def digitar_str(str):
-  while True:
-    entrada = input(str)
-    if entrada.isalpha():
-      return entrada
-    else:
-      print("Digite apenas letras!")
+  i = 0
+  for empregado in empregados:
+    if empregado["nome"] == nome:
+      empregados.pop(i)
+      break
+    i += 1
+
+  with open("empregados.json", "w") as arq:
+    json.dump(empregados, arq, indent=2)
+
+  print("Exclusão feita com sucesso!\n")
+
+def visualizar_empregados():
+  with open("empregados.json", "r") as arq:
+    empregados = json.load(arq)
+
+  print("NOME       | SETOR      | CARGO      | SALÁRIO")
+  for empregado in empregados:
+    print(f"{empregado["nome"]: <10} | {empregado["setor"]: <10}" +
+          f" | {empregado["cargo"]: <10} | R${empregado["salario"]: <10}")
+  print()
 
 def main():
   while True:
-    print("** SISTEMA DE RH **")
-    print("[1] Cadastrar empregado")
-    print("[2] Excluir cadastro")
-    print("[3] Mostrar empregados cadastrados")
+    print("** SISTEMA DE EMPREGADOS **")
+    print("[1] Cadastrar")
+    print("[2] Excluir")
+    print("[3] Visualizar")
     print("[4] Sair")
     opcao = input("Digite uma opção: ")
     
@@ -56,7 +75,7 @@ def main():
         excluir_cadastro()
 
       case 3:
-        buscar_empregados()
+        visualizar_empregados()
 
       case 4:
         break

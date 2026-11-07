@@ -1,0 +1,20 @@
+[
+  {
+    "nome": "Luiz",
+    "setor": "Financeiro",
+    "cargo": "Analista",
+    "salario": 6300.0
+  },
+  {
+    "nome": "Sara",
+    "setor": "RH",
+    "cargo": "Gerente",
+    "salario": 5700.0
+  },
+  {
+    "nome": "J\u00falia",
+    "setor": "RH",
+    "cargo": "Estagi\u00e1ria",
+    "salario": 1500.0
+  }
+]
